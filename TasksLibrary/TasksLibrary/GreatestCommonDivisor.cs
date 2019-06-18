@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TasksLibrary
 {
@@ -11,6 +9,15 @@ namespace TasksLibrary
 
     public abstract class GreatestCommonDivisor
     {
+        /// <summary>
+        /// Finds the gcd of two or more numbers and measures the search time.
+        /// </summary>
+        /// <param name="method">Find gcd algorithm.</param>
+        /// <param name="workTimeMilliseconds">Spended time.</param>
+        /// <param name="num1">First integer.</param>
+        /// <param name="num2">Second integer.</param>
+        /// <param name="numbers">Additional integers.</param>
+        /// <returns></returns>
         protected static int GetGCD(AlgorithmMethod method, out double workTimeMilliseconds, int num1, int num2, params int[] numbers)
         {
             var totalNumbers = new int[2 + numbers.Length];
@@ -56,6 +63,11 @@ namespace TasksLibrary
             return GetGCD(FindGCDByEuclid, out workTimeMilliseconds, num1, num2, numbers);
         }
 
+        /// <summary>
+        /// Method which find greatest common divisor of two or more integers with Euclid algorithm.
+        /// </summary>
+        /// <param name="numbers">Input integers.</param>
+        /// <returns>Greatest common divisor.</returns>
         private static int FindGCDByEuclid(int[] numbers)
         {
             if (numbers.Length == 1)
@@ -82,6 +94,11 @@ namespace TasksLibrary
             return GetGCD(CallGCD, out workTimeMilliseconds, num1, num2, numbers);
         }
 
+        /// <summary>
+        /// Pairwise causes a search for gcd.
+        /// </summary>
+        /// <param name="numbers">Integers.</param>
+        /// <returns>greatest common divisor</returns>
         public static int CallGCD(params int[] numbers)
         {
             var stack = new Stack<long>(numbers.Select(x => (long)x));
@@ -95,6 +112,12 @@ namespace TasksLibrary
             return (int)stack.Pop();
         }
 
+        /// <summary>
+        /// Method which find greatest common divisor of two integers with Stain algorithm.
+        /// </summary>
+        /// <param name="a">First integer.</param>
+        /// <param name="b">Second integer.</param>
+        /// <returns>Greatest common divisor.</returns>
         public static long FindGCDByStain(long a, long b)
         {
             if (a == b)

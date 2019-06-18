@@ -7,6 +7,10 @@ namespace TasksLibrary
     {
         private const int BitsCount = 64;
 
+        /// <summary>
+        /// Сonverts a real number into binary form.
+        /// </summary>
+        /// <returns>String representation of a binary number.</returns>
         public static string ToIEEE754(this double inputNumber)
         {
             var bits = new bool[BitsCount];

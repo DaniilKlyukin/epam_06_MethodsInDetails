@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TasksLibrary
+﻿namespace TasksLibrary
 {
     public static class NullableTypesExtensions
     {

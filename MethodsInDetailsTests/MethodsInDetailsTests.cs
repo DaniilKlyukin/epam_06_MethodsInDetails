@@ -1,8 +1,6 @@
 ﻿using TasksLibrary;
 using NUnit.Framework;
 using MSUnitTest = Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections;
 
 namespace MethodsInDetailsTests
 {

@@ -18,26 +18,19 @@ namespace TasksLibrary
         /// <param name="num2">Second integer.</param>
         /// <param name="numbers">Additional integers.</param>
         /// <returns></returns>
-        protected static int GetGCD(AlgorithmMethod method, out double workTimeMilliseconds, int num1, int num2, params int[] numbers)
+        protected static int GetGCD(AlgorithmMethod method, out double workTimeMilliseconds, params int[] numbers)
         {
-            var totalNumbers = new int[2 + numbers.Length];
-            totalNumbers[0] = num1;
-            totalNumbers[1] = num2;
-
-            for (int i = 0; i < numbers.Length; i++)
-                totalNumbers[2 + i] = numbers[i];
-
-            totalNumbers = RemoveZeros(totalNumbers);
+            numbers = RemoveZeros(numbers);
 
             var watcher = new Stopwatch();
             var gcd = 0;
 
             watcher.Start();
 
-            if (totalNumbers.Length == 0)
+            if (numbers.Length == 0)
                 gcd = 0;
             else
-                gcd = Math.Abs(method(totalNumbers));
+                gcd = Math.Abs(method(numbers));
 
             watcher.Stop();
             workTimeMilliseconds = watcher.ElapsedMilliseconds;
@@ -57,10 +50,10 @@ namespace TasksLibrary
 
     public class EuclidGreatestCommonDivisor : GreatestCommonDivisor
     {
-        public static int GetGCD(out double workTimeMilliseconds, int num1, int num2, params int[] numbers)
+        public static int GetGCD(out double workTimeMilliseconds, params int[] numbers)
         {
             workTimeMilliseconds = 0;
-            return GetGCD(FindGCDByEuclid, out workTimeMilliseconds, num1, num2, numbers);
+            return GetGCD(FindGCDByEuclid, out workTimeMilliseconds, numbers);
         }
 
         /// <summary>
@@ -88,10 +81,10 @@ namespace TasksLibrary
 
     public class StainGreatestCommonDivisor : GreatestCommonDivisor
     {
-        public static int GetGCD(out double workTimeMilliseconds, int num1, int num2, params int[] numbers)
+        public static int GetGCD(out double workTimeMilliseconds, params int[] numbers)
         {
             workTimeMilliseconds = 0;
-            return GetGCD(CallGCD, out workTimeMilliseconds, num1, num2, numbers);
+            return GetGCD(CallGCD, out workTimeMilliseconds, numbers);
         }
 
         /// <summary>

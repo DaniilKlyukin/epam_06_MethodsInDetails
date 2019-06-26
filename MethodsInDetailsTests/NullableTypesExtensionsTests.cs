@@ -1,12 +1,12 @@
 ﻿using TasksLibrary;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace MethodsInDetailsTests
 {
-    [TestClass]
+    [TestFixture]
     class NullableTypesExtensionsTests
     {
-        [TestMethod]
+        [Test]
         public void CheckIsNull()
         {
             int? i1 = 1;
